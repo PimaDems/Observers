@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS shifts (
     FOREIGN KEY (site_id) REFERENCES sites(id) ON DELETE CASCADE,
     FOREIGN KEY (role_id) REFERENCES roles(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-CREATE INDEX idx_shifts_starts ON shifts (starts_at);
+CREATE INDEX IF NOT EXISTS idx_shifts_starts ON shifts (starts_at);
 
 CREATE TABLE IF NOT EXISTS volunteers (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS signups (
     FOREIGN KEY (shift_id) REFERENCES shifts(id) ON DELETE CASCADE,
     FOREIGN KEY (volunteer_id) REFERENCES volunteers(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-CREATE INDEX idx_signups_volunteer ON signups (volunteer_id);
+CREATE INDEX IF NOT EXISTS idx_signups_volunteer ON signups (volunteer_id);
 
 CREATE TABLE IF NOT EXISTS verification_tokens (
     id INT AUTO_INCREMENT PRIMARY KEY,

@@ -33,7 +33,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
             $msg = 'Assigned. Signups for this site and role now go to the coordinator.';
         }
     } elseif ($act === 'unassign') {
-        Db::exec('DELETE FROM coordinator_sites WHERE site_id = ? AND role_id = ? AND coordinator_id = ?', [(int) $_POST['site_id'], (int) $_POST['role_id'], $cid]);
+        Db::exec('DELETE FROM coordinator_sites WHERE site_id = ? AND role_id = ? AND coordinator_id = ?', [(int) ($_POST['site_id'] ?? 0), (int) ($_POST['role_id'] ?? 0), $cid]);
     } elseif ($act === 'notify') {
         $msg = Coordinators::notifyPending() . ' pending signup(s) forwarded to coordinators.';
     }
