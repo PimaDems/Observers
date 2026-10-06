@@ -74,6 +74,9 @@ final class Util
     public static function csvSafe(mixed $v): string
     {
         $s = (string) $v;
+        if (preg_match('/^\+\d{7,15}$/', $s)) {
+            return $s; // E.164 phone number
+        }
         return ($s !== '' && strpbrk($s[0], "=+-@\t\r") !== false) ? "'" . $s : $s;
     }
 

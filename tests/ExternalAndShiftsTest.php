@@ -98,6 +98,6 @@ final class ExternalAndShiftsTest extends DbTestCase
         rewind($out);
         $csv = stream_get_contents($out);
         $this->assertStringContainsString("'=Evil Box", $csv);
-        $this->assertStringContainsString('+15205550101', $csv);
+        $this->assertStringContainsString(',+15205550101,', $csv);
     }
 }

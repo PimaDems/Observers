@@ -57,7 +57,7 @@ final class Security
         header('X-Content-Type-Options: nosniff');
         header('X-Frame-Options: DENY');
         header('Referrer-Policy: same-origin');
-        header("Content-Security-Policy: default-src 'self'; img-src 'self' data: https://*.tile.openstreetmap.org; "
+        header("Content-Security-Policy: default-src 'self'; img-src 'self' data: https://tile.openstreetmap.org https://*.tile.openstreetmap.org; "
             . "style-src 'self' 'unsafe-inline'; script-src 'self'; frame-ancestors 'none'");
     }
 }
