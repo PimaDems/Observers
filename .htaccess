@@ -1,0 +1,13 @@
+Options -Indexes
+DirectoryIndex index.php
+
+# Never serve configuration, schema or logs
+<FilesMatch "^(config(\.sample)?\.php|schema\.sql|.*\.log|\.gitignore|composer\.(json|lock)|phpunit\.xml)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
